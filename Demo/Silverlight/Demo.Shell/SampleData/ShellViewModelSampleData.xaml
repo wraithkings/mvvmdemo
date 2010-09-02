@@ -1,0 +1,1 @@
+﻿<vm:ShellViewModel xmlns:vm="clr-namespace:Demo.Shell.ViewModels" Name="SampleData_Names"/>
