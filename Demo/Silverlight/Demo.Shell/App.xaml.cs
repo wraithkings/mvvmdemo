@@ -1,6 +1,8 @@
 ﻿namespace Demo.Shell
 {
     using System;
+    using System.ComponentModel.Composition.Hosting;
+    using System.ComponentModel.Composition;
     using System.Windows;
 
     public partial class App : Application
@@ -12,6 +14,15 @@
             this.UnhandledException += this.Application_UnhandledException;
 
             InitializeComponent();
+
+            var catalog = new AggregateCatalog(new AssemblyCatalog(typeof(App).Assembly));
+            var container = new CompositionContainer(catalog);
+
+            var batch = new CompositionBatch();
+            batch.AddExportedValue(container);
+            ViewModelLocator.Container = container;
+
+            container.Compose(batch);
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)

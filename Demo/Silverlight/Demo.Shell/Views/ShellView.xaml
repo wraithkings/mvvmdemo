@@ -1,31 +1,32 @@
 ﻿<UserControl
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:Demo.Shell"
-	xmlns:ViewModels="clr-namespace:Demo.Shell.ViewModels"
-	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-	mc:Ignorable="d"
-	x:Class="Demo.Shell.Views.ShellView"
-	d:DesignWidth="640" d:DesignHeight="480">
-	<UserControl.Resources>
-		<ViewModels:ShellViewModel x:Key="ShellViewModelDataSource" />
-	</UserControl.Resources>
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Demo.Shell"
+    xmlns:ViewModels="clr-namespace:Demo.Shell.ViewModels"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    mc:Ignorable="d"
+    x:Class="Demo.Shell.Views.ShellView"
+    local:Binder.Model="ShellViewModel"
+    d:DesignWidth="640" d:DesignHeight="480">
+    <UserControl.Resources>
+        <ViewModels:ShellViewModel x:Key="ShellViewModelDataSource" />
+    </UserControl.Resources>
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource ShellViewModelDataSource}}">
-		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center" d:DataContext="{d:DesignData /SampleData/ShellViewModelSampleData.xaml}"/>
-			<StackPanel Orientation="Horizontal">
-				<TextBox x:Name="textBox" TextWrapping="Wrap" Margin="5" Width="100"/>
-				<Button Content="Button" Width="75" Margin="5">
-					<i:Interaction.Triggers>
-						<i:EventTrigger EventName="Click">
-							<i:InvokeCommandAction Command="{Binding SetNameCommand}" CommandParameter="{Binding Text, ElementName=textBox}"/>
-						</i:EventTrigger>
-					</i:Interaction.Triggers>
-				</Button>
-			</StackPanel>
-		</StackPanel>
-	</Grid>
+    <Grid x:Name="LayoutRoot">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center" d:DataContext="{d:DesignData /SampleData/ShellViewModelSampleData.xaml}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Margin="5" Width="100"/>
+                <Button Content="Button" Width="75" Margin="5">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SetNameCommand}" CommandParameter="{Binding Text, ElementName=textBox}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </UserControl>

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -61,9 +62,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\..\Silverlight\Demo.Shell\Binder.cs">
+      <Link>Binder.cs</Link>
+    </Compile>
     <Compile Include="..\..\Silverlight\Demo.Shell\Helpers\NotifyPropertyChangedHelper.cs">
       <Link>Helpers\NotifyPropertyChangedHelper.cs</Link>
     </Compile>
+    <Compile Include="..\..\Silverlight\Demo.Shell\ViewModelLocator.cs">
+      <Link>ViewModelLocator.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>

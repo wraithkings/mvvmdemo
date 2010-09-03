@@ -1,10 +1,12 @@
 ﻿namespace Demo.Shell.ViewModels
 {
     using System.ComponentModel;
+    using System.ComponentModel.Composition;
     using System.Windows.Input;
     using Helpers;
     using Microsoft.Expression.Interactivity.Core;
 
+    [Export("ShellViewModel")]
     public class ShellViewModel : INotifyPropertyChanged
     {
         private string _name = "Test";

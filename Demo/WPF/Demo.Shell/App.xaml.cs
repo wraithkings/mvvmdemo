@@ -1,5 +1,7 @@
 ﻿namespace Demo.Shell
 {
+    using System.ComponentModel.Composition.Hosting;
+    using System.ComponentModel.Composition;
     using System.Windows;
 
     /// <summary>
@@ -7,5 +9,8 @@
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+        }
     }
 }
