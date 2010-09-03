@@ -1,7 +1,9 @@
 ﻿namespace Demo.Shell.ViewModels
 {
     using System.ComponentModel;
+    using System.Windows.Input;
     using Helpers;
+    using Microsoft.Expression.Interactivity.Core;
 
     public class ShellViewModel : INotifyPropertyChanged
     {
@@ -15,6 +17,13 @@
                 _name = value;
                 this.NotifyPropertyChanged(() => Name, PropertyChanged);
             }
+        }
+
+        public ICommand SetNameCommand { get; set; }
+
+        public ShellViewModel()
+        {
+            SetNameCommand = new ActionCommand((name) => Name = (string) name);
         }
 
         #region INotifyPropertyChanged
