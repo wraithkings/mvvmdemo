@@ -1,6 +1,5 @@
-namespace Demo.Shell
+namespace TinyMvvmFramework
 {
-    using System;
     using System.ComponentModel.Composition.Hosting;
     using System.Windows;
 

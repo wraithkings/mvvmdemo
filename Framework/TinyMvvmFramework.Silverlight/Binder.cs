@@ -1,4 +1,4 @@
-namespace Demo.Shell
+namespace TinyMvvmFramework
 {
     using System;
     using System.Windows;

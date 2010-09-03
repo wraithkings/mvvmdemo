@@ -3,11 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Demo.Shell"
     xmlns:ViewModels="clr-namespace:Demo.Shell.ViewModels"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:tiny="clr-namespace:TinyMvvmFramework;assembly=TinyMvvmFramework.WPF"
     mc:Ignorable="d"
-    local:Binder.Model="ShellViewModel"
+    tiny:Binder.Model="ShellViewModel"
     x:Class="Demo.Shell.Views.ShellView"
     d:DesignWidth="640" d:DesignHeight="480">
     <UserControl.Resources>

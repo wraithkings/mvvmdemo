@@ -2,6 +2,7 @@ namespace Demo.Shell
 {
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
+    using TinyMvvmFramework;
 
     public class Bootstrapper
     {

@@ -62,14 +62,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="..\..\Silverlight\Demo.Shell\Binder.cs">
-      <Link>Binder.cs</Link>
-    </Compile>
     <Compile Include="..\..\Silverlight\Demo.Shell\Helpers\NotifyPropertyChangedHelper.cs">
       <Link>Helpers\NotifyPropertyChangedHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Silverlight\Demo.Shell\ViewModelLocator.cs">
-      <Link>ViewModelLocator.cs</Link>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
@@ -109,7 +103,12 @@
       <Visible>false</Visible>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\TinyMvvmFramework.WPF\TinyMvvmFramework.WPF.csproj">
+      <Project>{FEDEF987-B698-42BC-9981-EC8AA8A56813}</Project>
+      <Name>TinyMvvmFramework.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

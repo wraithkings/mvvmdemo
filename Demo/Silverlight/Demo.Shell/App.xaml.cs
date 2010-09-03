@@ -4,6 +4,7 @@
     using System.ComponentModel.Composition.Hosting;
     using System.ComponentModel.Composition;
     using System.Windows;
+    using TinyMvvmFramework;
 
     public partial class App : Application
     {
