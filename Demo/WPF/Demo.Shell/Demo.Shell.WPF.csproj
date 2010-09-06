@@ -62,10 +62,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\..\Silverlight\Demo.Shell\Bootstrapper.cs">
+      <Link>Bootstrapper.cs</Link>
+    </Compile>
     <Compile Include="..\..\Silverlight\Demo.Shell\Helpers\NotifyPropertyChangedHelper.cs">
       <Link>Helpers\NotifyPropertyChangedHelper.cs</Link>
     </Compile>
-    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>

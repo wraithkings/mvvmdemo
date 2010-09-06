@@ -5,11 +5,28 @@ namespace TinyMvvmFramework
 
     public static class ViewModelLocator
     {
-        public static CompositionContainer Container;
+        private static CompositionContainer _container;
+
+        public static CompositionContainer Container
+        {
+            get
+            {
+                if (_container == null)
+                {
+                    _container = new CompositionContainer();
+                }
+                return _container;
+            }
+            set { _container = value; }
+        }
 
         public static void Bind(string viewModelName, DependencyObject dependencyObject)
         {
-            var vm = Container.GetExportedValue<object>(viewModelName);
+            if (_container == null)
+            {
+                return;
+            }
+            var vm = _container.GetExportedValue<object>(viewModelName);
             var fe = dependencyObject as FrameworkElement;
             fe.DataContext = vm;
         }
