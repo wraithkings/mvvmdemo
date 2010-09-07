@@ -3,25 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="clr-namespace:Demo.Shell.ViewModels"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:tiny="clr-namespace:TinyMvvmFramework;assembly=TinyMvvmFramework.Silverlight"
+    xmlns:tiny="http://github.com/wraithkings/mvvmdemo"
     mc:Ignorable="d"
     x:Class="Demo.Shell.Views.ShellView"
     tiny:Binder.Model="ShellViewModel"
     d:DesignWidth="640" d:DesignHeight="480">
     <UserControl.Resources>
-        <DataTemplate x:Key="friendDataTemplate">
-            <StackPanel>
-                <TextBlock TextWrapping="Wrap"
-                           Text="{Binding Name}" />
-                <TextBlock TextWrapping="Wrap"
-                           Text="{Binding Age}" />
-                <TextBlock TextWrapping="Wrap"
-                           Text="{Binding Birthday}" />
-            </StackPanel>
-        </DataTemplate>
-        <Style x:Key="ListBoxItemStyle1"
+    	<Style x:Key="ListBoxItemStyle1"
                TargetType="ListBoxItem">
             <Setter Property="Background">
                 <Setter.Value>

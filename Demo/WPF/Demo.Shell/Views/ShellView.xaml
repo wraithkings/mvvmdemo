@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:tiny="clr-namespace:TinyMvvmFramework;assembly=TinyMvvmFramework.WPF"
+             xmlns:tiny="http://github.com/wraithkings/mvvmdemo"
              mc:Ignorable="d"
              tiny:Binder.Model="ShellViewModel"
              x:Class="Demo.Shell.Views.ShellView"
