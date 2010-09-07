@@ -65,11 +65,24 @@
     <Compile Include="..\..\Silverlight\Demo.Shell\Bootstrapper.cs">
       <Link>Bootstrapper.cs</Link>
     </Compile>
+    <Compile Include="..\..\Silverlight\Demo.Shell\Friend.cs">
+      <Link>Friend.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Demo.Shell\FriendsService.cs">
+      <Link>FriendsService.cs</Link>
+    </Compile>
     <Compile Include="..\..\Silverlight\Demo.Shell\Helpers\NotifyPropertyChangedHelper.cs">
       <Link>Helpers\NotifyPropertyChangedHelper.cs</Link>
     </Compile>
+    <Compile Include="..\..\Silverlight\Demo.Shell\IFriendsService.cs">
+      <Link>IFriendsService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Silverlight\Demo.Shell\SampleData\DesignTimeFriendsService.cs">
+      <Link>SampleData\DesignTimeFriendsService.cs</Link>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Page Include="..\..\Silverlight\Demo.Shell\SampleData\ShellViewModelSampleData.xaml">
       <Link>SampleData\ShellViewModelSampleData.xaml</Link>
@@ -92,8 +105,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ShellView.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

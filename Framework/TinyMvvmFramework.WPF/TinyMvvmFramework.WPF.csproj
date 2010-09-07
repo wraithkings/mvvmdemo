@@ -49,6 +49,12 @@
     <Compile Include="..\TinyMvvmFramework.Silverlight\Binder.cs">
       <Link>Binder.cs</Link>
     </Compile>
+    <Compile Include="..\TinyMvvmFramework.Silverlight\Designer.cs">
+      <Link>Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyMvvmFramework.Silverlight\FilteredCatalog.cs">
+      <Link>FilteredCatalog.cs</Link>
+    </Compile>
     <Compile Include="..\TinyMvvmFramework.Silverlight\ViewModelLocator.cs">
       <Link>ViewModelLocator.cs</Link>
     </Compile>

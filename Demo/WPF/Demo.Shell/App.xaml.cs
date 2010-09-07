@@ -11,6 +11,7 @@
     {
         public App()
         {
+            var bootstrapper = new Bootstrapper();
         }
     }
 }

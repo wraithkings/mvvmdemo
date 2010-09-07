@@ -10,9 +10,14 @@ namespace Demo.Shell.Helpers
         {
             if (handler != null)
             {
-                string name = ((MemberExpression) property.Body).Member.Name;
+                string name = GetPropertyName(property);
                 handler(src, new PropertyChangedEventArgs(name));
             }
+        }
+
+        public static string GetPropertyName<T>(Expression<Func<T>> property)
+        {
+            return ((MemberExpression) property.Body).Member.Name;
         }
     }
 }

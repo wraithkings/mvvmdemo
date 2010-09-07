@@ -1,8 +1,11 @@
 namespace Demo.Shell
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
+    using System.ComponentModel.Composition.Primitives;
+    using System.Linq.Expressions;
     using TinyMvvmFramework;
 
     public class Bootstrapper
@@ -14,8 +17,13 @@ namespace Demo.Shell
             {
                 catalog.Catalogs.Add(ViewModelLocator.Container.Catalog);
             }
+            Expression<Func<ComposablePartDefinition, bool>> expression =
+                definition => !definition.Metadata.ContainsKey("IsDesignService") ||
+                    definition.Metadata.ContainsKey("IsDesignService") &&
+                    (bool) definition.Metadata["IsDesignService"] == Designer.IsInDesignMode;
+            var filteredCatalog = new FilteredCatalog(catalog, expression);
             var providers = new List<ExportProvider>(ViewModelLocator.Container.Providers);
-            var container = new CompositionContainer(catalog, providers.ToArray());
+            var container = new CompositionContainer(filteredCatalog, providers.ToArray());
 
             var batch = new CompositionBatch();
             batch.AddExportedValue(container);

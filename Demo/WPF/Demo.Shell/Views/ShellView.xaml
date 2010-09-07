@@ -1,32 +1,132 @@
-﻿<UserControl
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="clr-namespace:Demo.Shell.ViewModels"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:tiny="clr-namespace:TinyMvvmFramework;assembly=TinyMvvmFramework.WPF"
-    mc:Ignorable="d"
-    tiny:Binder.Model="ShellViewModel"
-    x:Class="Demo.Shell.Views.ShellView"
-    d:DesignWidth="640" d:DesignHeight="480">
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:tiny="clr-namespace:TinyMvvmFramework;assembly=TinyMvvmFramework.WPF"
+             mc:Ignorable="d"
+             tiny:Binder.Model="ShellViewModel"
+             x:Class="Demo.Shell.Views.ShellView"
+             d:DesignWidth="640"
+             d:DesignHeight="480">
     <UserControl.Resources>
-        <ViewModels:ShellViewModel x:Key="ShellViewModelDataSource" />
+        <DataTemplate x:Key="friendDataTemplate">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap"
+                           Text="{Binding Name}" />
+                <TextBlock TextWrapping="Wrap"
+                           Text="{Binding Age}" />
+                <TextBlock TextWrapping="Wrap"
+                           Text="{Binding Birthday}" />
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="ListBoxItemStyle1"
+               TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1"
+                                         StartPoint="0.5,0">
+                        <GradientStop Color="White"
+                                      Offset="0" />
+                        <GradientStop Color="#FF166D89"
+                                      Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin"
+                    Value="0,0,0,5" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected"
+                         Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0"
+                                                     StartPoint="0.5,1">
+                                    <GradientStop Color="White"
+                                                  Offset="0" />
+                                    <GradientStop Color="#FF166D89"
+                                                  Offset="1" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger.Setters>
+                </Trigger>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.2"
+                                                 Storyboard.TargetProperty="Opacity"
+                                                 To="0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.2"
+                                                 Storyboard.TargetProperty="Opacity" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center" d:DataContext="{d:DesignData /SampleData/ShellViewModelSampleData.xaml}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Text="{Binding Name}"
+                       VerticalAlignment="Center"
+                       d:DataContext="{d:DesignData /SampleData/ShellViewModelSampleData.xaml}" />
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Margin="5" Width="100"/>
-                <Button Content="Button" Width="75" Margin="5">
+                <TextBox x:Name="textBox"
+                         TextWrapping="Wrap"
+                         Margin="5"
+                         Width="100" />
+                <Button Content="Button"
+                        Width="75"
+                        Margin="5">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SetNameCommand}" CommandParameter="{Binding Text, ElementName=textBox}"/>
+                            <i:InvokeCommandAction Command="{Binding SetNameCommand}"
+                                                   CommandParameter="{Binding Text, ElementName=textBox}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="GetFriends"
+                        Width="75"
+                        Margin="5">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding GetFriendsCommand}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
             </StackPanel>
         </StackPanel>
+        <ListBox Grid.Row="1"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 ItemsSource="{Binding Friends}"
+                 ItemTemplate="{DynamicResource friendDataTemplate}"
+                 ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" />
+
     </Grid>
 </UserControl>
